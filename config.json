@@ -1,0 +1,8 @@
+{
+  "serial": null,
+  "message": "Hello",
+  "min_interval_seconds": 60.0,
+  "max_interval_seconds": 180.0,
+  "max_replies_per_scan": 5,
+  "send": false
+}

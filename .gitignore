@@ -1,0 +1,18 @@
+# Runtime artifacts
+dumps/
+replied_senders.json
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# OS junk
+.DS_Store
+Thumbs.db

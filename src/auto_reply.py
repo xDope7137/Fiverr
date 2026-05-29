@@ -5,14 +5,14 @@ resource-id `avatar_txt_vw` — the initial-placeholder TextView Fiverr
 renders when the sender hasn't uploaded a profile picture. That signal
 strongly correlates with first-time contacts in practice.
 
-Each successfully-replied sender is recorded in `replied_senders.json` next
-to this script. The same sender will never be replied to twice across runs.
+Each successfully-replied sender is recorded in `replied_senders.json` in
+the project root. The same sender will never be replied to twice across runs.
 
 Default mode is DRY-RUN — it walks the inbox, identifies who it WOULD reply
 to, and logs each step without typing or tapping send. Pass `--send` to
 actually post replies.
 
-Configuration is read from `config.json` next to this script:
+Configuration is read from `config.json` in the project root:
   - serial   : ADB serial / IP:PORT (null = auto-detect single device)
   - message  : the reply text (default "Hello")
   - send     : false = dry-run; true = actually post replies
@@ -43,7 +43,8 @@ from config_util import load_config, resolve_serial
 
 FIVERR_PACKAGE = "com.fiverr.fiverr"
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-HISTORY_PATH = os.path.join(SCRIPT_DIR, "replied_senders.json")
+PROJECT_ROOT = os.path.dirname(SCRIPT_DIR)
+HISTORY_PATH = os.path.join(PROJECT_ROOT, "replied_senders.json")
 
 
 def log(msg):

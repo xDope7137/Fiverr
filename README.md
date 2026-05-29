@@ -34,7 +34,7 @@ The configured message can be edited in `config.json` without touching any code.
 
 ## Configuration
 
-`config.json` (lives next to the scripts):
+`config.json` (in the project root — same folder as the BAT files):
 
 ```json
 {
@@ -70,7 +70,7 @@ All of these read `config.json` and can be double-clicked:
 | `start.bat` | Runs the watch loop using `config.send` (sends if true, dry-runs if false). |
 | `dump-ui.bat` | Prompts for a label and saves a screenshot + UI XML of the current screen into `dumps/`. Diagnostic only. |
 
-You can also run any script directly: `python watch_and_reply.py [--send] [--message "..."]`. CLI flags override `config.json`.
+You can also run any script directly: `python src\watch_and_reply.py [--send] [--message "..."]`. CLI flags override `config.json`.
 
 ## How it works (brief)
 
@@ -92,7 +92,7 @@ First-time-contact detection uses Fiverr's initial-placeholder avatar (`avatar_t
 
 **`adb devices` shows nothing.** USB debugging not enabled, or wireless ADB not connected. For wireless: `adb connect <ip>:5555`. Confirm with `adb devices`.
 
-**Preflight says "uiautomator2 agent connect failed."** First-time setup on this device may need: `python -m uiautomator2 init` to install the on-device agent.
+**Preflight says "uiautomator2 agent connect failed."** First-time setup on this device may need: `python -m uiautomator2 init` (run from the project root) to install the on-device agent.
 
 **Script says foreground isn't Fiverr.** Open the Fiverr app on the phone before starting. The script won't fight to bring it forward.
 
@@ -105,7 +105,7 @@ First-time-contact detection uses Fiverr's initial-placeholder avatar (`avatar_t
 ## File reference
 
 ```
-.
+fiverr-automation/
 ├── README.md              this file
 ├── NOTICE.md              copyright + disclaimer
 ├── CLAUDE.md              guidance for AI coding agents
@@ -115,17 +115,18 @@ First-time-contact detection uses Fiverr's initial-placeholder avatar (`avatar_t
 ├── setup.bat              first-time setup
 ├── check.bat              preflight only
 ├── dry-run.bat            safe test
-├── start.bat              live
+├── start.bat              live  <-- double-click this to run
 ├── dump-ui.bat            diagnostic
-├── config_util.py         shared config loader
-├── preflight.py           startup checks
-├── dump_ui.py             diagnostic UI dumper
-├── keepalive.py           keepalive-only loop (no auto-reply)
-├── auto_reply.py          one-shot auto-reply scan
-└── watch_and_reply.py     main looping script (combines keepalive + reply)
+└── src/
+    ├── config_util.py     shared config loader
+    ├── preflight.py       startup checks
+    ├── dump_ui.py         diagnostic UI dumper
+    ├── keepalive.py       keepalive-only loop (no auto-reply)
+    ├── auto_reply.py      one-shot auto-reply scan
+    └── watch_and_reply.py main looping script (combines keepalive + reply)
 ```
 
-Files that exist only at runtime (gitignored):
+Files that exist only at runtime (gitignored, never committed):
 
 ```
 dumps/                     diagnostic output of dump_ui.py

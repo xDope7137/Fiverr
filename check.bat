@@ -1,4 +1,5 @@
 @echo off
-python preflight.py
+title Fiverr Automation - Preflight
+python src\preflight.py
 echo.
 pause

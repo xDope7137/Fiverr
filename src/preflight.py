@@ -13,7 +13,8 @@ import subprocess
 import sys
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-CONFIG_PATH = os.path.join(SCRIPT_DIR, "config.json")
+PROJECT_ROOT = os.path.dirname(SCRIPT_DIR)
+CONFIG_PATH = os.path.join(PROJECT_ROOT, "config.json")
 FIVERR_PACKAGE = "com.fiverr.fiverr"
 
 

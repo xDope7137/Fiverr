@@ -1,6 +1,7 @@
 @echo off
+title Fiverr Automation - Setup
 echo ============================================================
-echo Fiverr Automation - first time setup
+echo  Fiverr Automation - first time setup
 echo ============================================================
 echo.
 echo [1/2] Installing Python dependencies...
@@ -18,10 +19,12 @@ if errorlevel 1 (
 echo.
 echo [2/2] Running preflight checks...
 echo.
-python preflight.py
+python src\preflight.py
 echo.
-echo Setup finished. Edit config.json (set "serial" and "message"),
-echo then run dry-run.bat to see what would happen,
-echo or start.bat to go live.
+echo ============================================================
+echo  Setup finished.
+echo ============================================================
+echo  Next: edit config.json (set "serial" and "message"),
+echo        then run dry-run.bat to preview, or start.bat to go live.
 echo.
 pause

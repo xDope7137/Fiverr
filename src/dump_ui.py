@@ -70,8 +70,8 @@ def main():
                         help="Override serial / IP:PORT from config.json.")
     parser.add_argument("--label", default="screen",
                         help="Short name for this dump (e.g. inbox, conversation, compose). Default: 'screen'.")
-    parser.add_argument("--output-dir", default=os.path.join(os.path.dirname(os.path.abspath(__file__)), "dumps"),
-                        help="Root folder for dump output. Default: ./dumps next to this script.")
+    parser.add_argument("--output-dir", default=os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "dumps"),
+                        help="Root folder for dump output. Default: dumps/ in the project root.")
     args = parser.parse_args()
 
     device = connect(resolve_serial(args.serial))

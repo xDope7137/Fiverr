@@ -1,11 +1,14 @@
 @echo off
+title Fiverr Automation - DRY RUN
 echo ============================================================
-echo Fiverr Automation - DRY RUN
+echo  Fiverr Automation - DRY RUN
 echo ============================================================
-echo Will detect new contacts and walk through the flow,
-echo but will NOT actually send any messages.
-echo Press Ctrl+C to stop.
+echo  Will scan for new contacts and walk through the flow,
+echo  but will NOT actually send any messages.
 echo.
-python watch_and_reply.py --dry-run
+echo  Press Ctrl+C in this window to stop.
+echo ============================================================
+echo.
+python src\watch_and_reply.py --dry-run
 echo.
 pause

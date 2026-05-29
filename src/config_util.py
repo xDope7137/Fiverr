@@ -6,7 +6,8 @@ CLI flags on each script still override values loaded from config.
 import json
 import os
 
-CONFIG_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "config.json")
+_PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+CONFIG_PATH = os.path.join(_PROJECT_ROOT, "config.json")
 
 DEFAULTS = {
     "serial": None,

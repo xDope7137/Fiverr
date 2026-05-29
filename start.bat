@@ -1,11 +1,21 @@
 @echo off
+title Fiverr Automation - Running
 echo ============================================================
-echo Fiverr Automation - LIVE
+echo  Fiverr Automation
 echo ============================================================
-echo Uses config.json. If "send": true, replies will be posted.
-echo If "send": false, dry-run only.
-echo Press Ctrl+C to stop.
+echo  Reading settings from config.json.
+echo    - "send": true  -> actually posts replies
+echo    - "send": false -> dry-run (no messages sent)
 echo.
-python watch_and_reply.py
+echo  Open the Fiverr app on the phone before starting.
+echo  Press Ctrl+C in this window to stop.
+echo ============================================================
+echo.
+python src\watch_and_reply.py
+if errorlevel 1 (
+    echo.
+    echo [ERROR] Script exited with an error.
+    echo Run check.bat to diagnose, or setup.bat if this is a fresh install.
+)
 echo.
 pause

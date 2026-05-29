@@ -2,14 +2,30 @@
 
 Fiverr Android-app texting automation. Drives `com.fiverr.fiverr` via uiautomator2 + ADB.
 
-Two user-facing scripts plus support utilities:
+## Layout
 
-- `watch_and_reply.py` — long-running loop. Human-like keepalive gestures + opportunistic auto-reply to first-time contacts when the loop lands on the Inbox.
-- `keepalive.py` — keepalive only, no replies. Safer / simpler for users who want to reply manually.
-- `auto_reply.py` — one-shot reply scan (no loop). Exists because `watch_and_reply.py` reuses its `find_new_contact_names` and `open_and_reply` helpers.
-- `dump_ui.py` — diagnostic: capture the current screen as screenshot + XML + resource-ids. Used when adding support for new screens or debugging selector regressions.
-- `preflight.py` — startup checks. Verifies Python, adb, uiautomator2, config, device, Fiverr installed, agent reachable.
-- `config_util.py` — shared `config.json` loader. Every script reads through this.
+```
+fiverr-automation/         <- project root: config + BAT launchers + docs
+├── config.json            user-editable settings
+├── *.bat                  Windows launchers (setup/check/dry-run/start/dump-ui)
+├── README.md              end-user docs
+├── CLAUDE.md              this file (agent-facing)
+├── NOTICE.md              copyright + disclaimer
+└── src/                   all Python lives here
+    ├── config_util.py     shared `config.json` loader (CONFIG_PATH resolves up one level)
+    ├── preflight.py       startup checks (Python, adb, uiautomator2, device, Fiverr, agent)
+    ├── dump_ui.py         diagnostic: screenshot + XML + resource-ids of the current screen
+    ├── keepalive.py       keepalive-only loop (no replies)
+    ├── auto_reply.py      one-shot inbox scan + reply; exports helpers re-used by watch_and_reply
+    └── watch_and_reply.py main loop: keepalive gestures + opportunistic inbox auto-reply
+```
+
+Runtime data lives at the project root and is gitignored:
+
+```
+dumps/                     dump_ui.py output (real screenshots — never commit)
+replied_senders.json       per-sender reply history (PII — never commit)
+```
 
 End-user docs live in `README.md`. This file is for AI agents / contributors.
 

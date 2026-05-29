@@ -11,7 +11,7 @@ Each iteration:
      contact not already in `replied_senders.json`, open the conversation,
      type the configured message, tap Send, back out, record the sender.
 
-The configurable message lives in `config.json` next to this script (auto-
+The configurable message lives in `config.json` in the project root (auto-
 created with safe defaults on first run). Edit that file to change what
 gets sent without touching the code. CLI flags override the file.
 
